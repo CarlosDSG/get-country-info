@@ -18,7 +18,7 @@ const getData = () => {
 		.then((resolve) => resolve.json())
 		.then((countriesData) => {
 			countriesData.forEach((country, index) => {
-				console.log(country.slice(0, 3));
+				console.log(country.name.common);
 			});
 		})
 		.catch((error) => {
