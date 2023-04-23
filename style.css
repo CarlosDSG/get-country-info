@@ -6,7 +6,7 @@ body {
 	font-family: 'Lato', sans-serif;
 }
 #header {
-	background-color: #040a1b;
+	background-color: #007a8a;
 	color: #fff;
 	padding: 0.7em 0;
 
@@ -22,8 +22,9 @@ h1,
 
 	padding: 1rem 2.5rem;
 	margin-top: 3rem;
-	color: #fff;
-	background-color: #335495;
+	border-radius: 4px;
+	color: #000;
+	background-color: #b1e7e6;
 }
 #cont p {
 	font-size: 1.2rem;
@@ -37,20 +38,40 @@ label {
 	font-size: 1.1rem;
 	margin-bottom: 1rem;
 }
-input {
-	width: 80px;
-	padding: 0.2rem 0.5rem;
-	text-align: center;
+.cont-relative {
+	width: 75%;
+	height: 35px;
+	margin: auto;
+	line-height: 35px;
+	border-radius: 3px;
+	position: relative;
+	overflow: hidden;
+	background-color: #fff;
 }
-input::placeholder {
-	font-size: 14px;
+input {
+	width: 80%;
+	font-size: 1.125rem;
+	text-align: center;
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
+.btn {
+	font-size: 1.0625rem;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	padding: 0 0.8em;
+	border: none;
+	background-color: #007a8a;
+	color: #fff;
+	border-radius: 0;
 }
 
 /* .flag-cont{} */
-.flag {
-	width: 100%;
-	object-fit: cover;
-}
+
 #result {
 	grid-template-columns: repeat(3, 1fr);
 	grid-template-rows: auto;
@@ -66,14 +87,33 @@ input::placeholder {
 #result .country-img {
 	width: 100%;
 	aspect-ratio: 16/9;
+	object-fit: cover;
 	overflow: hidden;
 }
 .card-container__text {
+	height: inherit;
 	padding: 1em;
 }
+/* .card-container__text ul {
+	display: flex;
+	flex-direction: column;
+} */
 
-@media only screen and (max-widht: 800) {
+@media only screen and (max-width: 800px) {
+	html {
+		font-size: 15px;
+	}
 	h1 {
 		margin: 0 1em;
+	}
+	#cont {
+		padding: 1rem 1.5rem;
+	}
+	#result {
+		grid-template-columns: minmax(min-content, 80%);
+		grid-template-rows: repeat(3, min-content);
+		gap: 20px;
+		margin-top: 5%;
+		justify-content: center;
 	}
 }

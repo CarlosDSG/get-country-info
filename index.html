@@ -15,19 +15,24 @@
 			crossorigin="anonymous"
 		/>
 		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css" />
 	</head>
 	<body>
 		<header id="header" class="container-fluid"><h1 class="text-center">Country information</h1></header>
-		<div id="cont" class="container-md">
+		<div id="cont" class="container-fluid">
 			<p class="text-center">
 				<span class="bold">How to use:</span> Enter a letter of the alphabet and information about 3 countries that
 				start with that letter will be displayed
 			</p>
 			<form id="form" class="w-75 d-flex justify-content-center m-auto" action="#" method="get">
 				<div class="form-group">
-					<label for="getLetter">Enter a letter of the alphabet to get the information</label>
-					<input id="inputLetter" type="text" name="letter" maxlength="1" placeholder="letter here..." />
-					<button form="form" id="btn" type="submit" class="btn btn-secondary">Get</button>
+					<label for="getLetter">Enter a letter of the alphabet </label>
+					<div class="cont-relative">
+						<input id="inputLetter" class="input" type="text" name="letter" maxlength="1" placeholder="a-b-c..." />
+						<button form="form" id="btn" type="submit" class="btn">
+							<i class="bi bi-search position"></i>
+						</button>
+					</div>
 				</div>
 			</form>
 			<div id="result" class="d-grid"></div>
