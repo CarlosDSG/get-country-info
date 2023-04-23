@@ -16,34 +16,35 @@ form.addEventListener('submit', (e) => {
 });
 
 const getData = (letter) => {
+	document.getElementById('result').innerHTML = '';
 	fetch(url)
-		.then((resolve) => resolve.json())
+		.then((response) => response.json())
 		.then((countriesData) => {
 			const countryData = countriesData
 				.filter((country) => country.name.common.startsWith(letter.toUpperCase()))
 				.sort(() => Math.random() - 0.5)
 				.slice(0, 3);
+
 			countryData.forEach((country) => {
-				//TODO: Obtener los diferentes lenguajes / monedas que pueda haber en country y meterlos a un li
-				const languages = Object.values(country.languages);
-				// Se recorren los lenguajes para mostrarse luego
-				languages.forEach((lang) => {
-					let languageList = `
-					<li>${lang}</li>
-					`;
-					document.getElementById('result').innerHTML += `
-				<div class="country-card">
-				<img src="${country.flags.png}">
-				<h3 class="country-name">${country.name.common}</h3>
-				<p class="country-capital">${country.capital}</p>
-				<p class="country-currency">${Object.values(country.currencies)[0].name}</p>
-				<ul class="country-language">${languageList}</ul>
-				</div>
-				`;
+				// Se recorren los lenguajes en caso de haber mas de uno mostrar todos en el body
+				let languageList = '';
+				Object.values(country.languages).forEach((language) => {
+					languageList += `<li>${language}</li>`;
 				});
+
+				document.getElementById('result').innerHTML += `
+			<div class="country-card">
+			  <img class="country-img" src="${country.flags.png}">
+			  <div class="card-container__text">
+			  <h3 class="country-name">${country.name.common}</h3>
+			  <p class="country-capital">${country.capital}</p>
+			  <p>Main currency: ${Object.values(country.currencies)[0].name}</p>
+			  <ul class="country-language ">${languageList}</ul>
+			  </div>
+			</div>
+		  `;
 			});
 		})
-
 		.catch((error) => {
 			console.log(error);
 		});
