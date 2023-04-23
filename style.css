@@ -39,6 +39,12 @@ input::placeholder {
 	font-size: 14px;
 }
 
+/* .flag-cont{} */
+.flag {
+	width: 100%;
+	object-fit: cover;
+}
+
 @media only screen and (max-widht: 800) {
 	h1 {
 		margin: 0 1em;
