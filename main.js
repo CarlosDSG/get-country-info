@@ -23,17 +23,24 @@ const getData = (letter) => {
 				.filter((country) => country.name.common.startsWith(letter.toUpperCase()))
 				.sort(() => Math.random() - 0.5)
 				.slice(0, 3);
-			console.log(countryData);
 			countryData.forEach((country) => {
-				document.getElementById('result').innerHTML += `
+				//TODO: Obtener los diferentes lenguajes / monedas que pueda haber en country y meterlos a un li
+				const languages = Object.values(country.languages);
+				// Se recorren los lenguajes para mostrarse luego
+				languages.forEach((lang) => {
+					let languageList = `
+					<li>${lang}</li>
+					`;
+					document.getElementById('result').innerHTML += `
 				<div class="country-card">
 				<img src="${country.flags.png}">
 				<h3 class="country-name">${country.name.common}</h3>
 				<p class="country-capital">${country.capital}</p>
-				<p class="country-currency">${country.currencies.name}</p>
-				<ul class="country-language">${country.languages}</ul>
+				<p class="country-currency">${Object.values(country.currencies)[0].name}</p>
+				<ul class="country-language">${languageList}</ul>
 				</div>
 				`;
+				});
 			});
 		})
 
