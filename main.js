@@ -29,7 +29,8 @@ const getData = (letter) => {
 				// Se recorren los lenguajes en caso de haber mas de uno mostrar todos en el body
 				let languageList = '';
 				Object.values(country.languages).forEach((language) => {
-					languageList += `<li>${language}</li>`;
+					languageList += `
+					<li>${language}</li>`;
 				});
 
 				document.getElementById('result').innerHTML += `
@@ -37,9 +38,12 @@ const getData = (letter) => {
 			  <img class="country-img" src="${country.flags.png}">
 			  <div class="card-container__text">
 			  <h3 class="country-name">${country.name.common}</h3>
-			  <p class="country-capital">${country.capital}</p>
-			  <p>Main currency: ${Object.values(country.currencies)[0].name}</p>
-			  <ul class="country-language ">${languageList}</ul>
+			  <p class="country-capital"><b>Capital</b>: ${country.capital}</p>
+			  <p> <b>Currency:</b> ${Object.values(country.currencies)[0].name}</p>
+			  <div>
+			  <h6>Languages:</h6>
+			  <ul class="country-language">${languageList}</ul> 
+			  </div>
 			  </div>
 			</div>
 		  `;
